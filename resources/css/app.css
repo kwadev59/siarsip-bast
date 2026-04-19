@@ -1,0 +1,214 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@layer base {
+    html {
+        @apply scroll-smooth;
+        scrollbar-gutter: stable;
+    }
+
+    body {
+        @apply bg-[#f7f4ec] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+        font: inherit;
+    }
+
+    body:not(.page-ready) [data-page-animate] {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    body.page-ready [data-page-animate] {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 240ms ease-out, transform 240ms ease-out;
+    }
+}
+
+@layer components {
+    .app-shell {
+        background:
+            radial-gradient(circle at top left, rgba(59, 130, 246, 0.08), transparent 28%),
+            linear-gradient(180deg, #fbfaf6 0%, #f5f1e8 100%);
+    }
+
+    .glass-panel {
+        @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+    }
+
+    .glass-panel-strong {
+        @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+    }
+
+    .section-kicker {
+        @apply text-[11px] font-semibold uppercase tracking-[0.3em] text-blue-600;
+    }
+
+    .page-subtitle {
+        @apply text-sm leading-6 text-slate-500 sm:text-[15px];
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-200;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition duration-200 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-200;
+    }
+
+    .btn-danger {
+        @apply inline-flex items-center justify-center rounded-xl border border-rose-200 bg-white px-4 py-2.5 text-sm font-semibold text-rose-600 transition duration-200 hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-100;
+    }
+
+    .field-label {
+        @apply mb-2 block text-sm font-medium text-slate-700;
+    }
+
+    .field-input {
+        @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-800 outline-none transition duration-200 placeholder:text-slate-400 focus:border-blue-300 focus:ring-4 focus:ring-blue-50;
+    }
+
+    .field-textarea {
+        @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-800 outline-none transition duration-200 placeholder:text-slate-400 focus:border-blue-300 focus:ring-4 focus:ring-blue-50;
+    }
+
+    .field-select {
+        @apply w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-800 outline-none transition duration-200 focus:border-blue-300 focus:ring-4 focus:ring-blue-50;
+    }
+
+    .metric-card {
+        @apply rounded-xl border border-slate-200 bg-white p-5 shadow-sm;
+    }
+
+    .metric-value {
+        @apply text-4xl font-bold tracking-tight text-slate-900;
+    }
+
+    .metric-label {
+        @apply text-sm font-medium text-slate-500;
+    }
+
+    .metric-badge {
+        @apply rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em];
+    }
+
+    .table-frame {
+        @apply overflow-hidden rounded-xl border border-slate-200 bg-white;
+    }
+
+    .table-scroll {
+        @apply overflow-x-auto;
+    }
+
+    .table-base {
+        @apply min-w-full divide-y divide-slate-200 text-left text-sm;
+    }
+
+    .table-head {
+        @apply bg-slate-50 text-slate-500;
+    }
+
+    .table-head th {
+        @apply px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em];
+    }
+
+    .table-row {
+        @apply border-t border-slate-100 bg-white transition duration-150 hover:bg-slate-50;
+    }
+
+    .status-pill {
+        @apply inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold capitalize text-slate-600;
+    }
+
+    .status-active {
+        @apply border-blue-200 bg-blue-50 text-blue-700;
+    }
+
+    .status-borrowed {
+        @apply border-amber-200 bg-amber-50 text-amber-700;
+    }
+
+    .status-archived {
+        @apply border-slate-200 bg-slate-100 text-slate-600;
+    }
+
+    .info-card {
+        @apply rounded-xl border border-slate-200 bg-slate-50 p-4;
+    }
+
+    .empty-state {
+        @apply px-6 py-14 text-center text-sm text-slate-500;
+    }
+
+    .topbar-chip {
+        @apply rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700;
+    }
+
+    .mobile-nav-link {
+        @apply flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50;
+    }
+
+    [data-mobile-panel] {
+        transition: transform 260ms ease, opacity 260ms ease;
+        will-change: transform, opacity;
+    }
+
+    [data-mobile-backdrop] {
+        transition: opacity 260ms ease;
+    }
+
+    [data-modal] {
+        display: block;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 180ms ease;
+    }
+
+    [data-modal][data-open='true'] {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    [data-modal-backdrop] {
+        opacity: 0;
+        transition: opacity 180ms ease;
+    }
+
+    [data-modal-panel] {
+        opacity: 0;
+        transform: translateY(-14px);
+        transition: opacity 180ms ease, transform 180ms ease;
+        will-change: transform, opacity;
+    }
+
+    [data-modal][data-open='true'] [data-modal-backdrop] {
+        opacity: 1;
+    }
+
+    [data-modal][data-open='true'] [data-modal-panel] {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    [data-modal][data-open='true'] {
+        pointer-events: auto;
+    }
+
+    [data-modal][data-open='false'] {
+        pointer-events: none;
+    }
+}
