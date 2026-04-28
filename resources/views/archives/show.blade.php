@@ -136,7 +136,7 @@
             </div>
             <div class="card-body p-0 position-relative d-flex justify-content-center overflow-hidden">
                 @if($archive->file_path)
-                    <iframe src="{{ asset('storage/' . $archive->file_path) }}#toolbar=0" width="100%" height="100%" style="border: none; position: absolute; top:0; left:0;"></iframe>
+                    <embed src="{{ asset('storage/' . $archive->file_path) }}" type="application/pdf" width="100%" height="100%" style="border: none; position: absolute; top:0; left:0;" />
                 @else
                     <div class="text-center my-auto p-5 text-white-50">
                         <i class="bi bi-file-earmark-pdf fs-1"></i>
